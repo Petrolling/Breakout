@@ -7,6 +7,7 @@
 #include "PowerupManager.h"
 #include "MessagingSystem.h"
 #include "UI.h"
+#include "VFX.h"
 
 
 
@@ -46,7 +47,14 @@ private:
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
     UI* _ui;
+	VFX* _vfx;
+
+    sf::View _camera;
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
-    static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawn
+    float _powerupFrequency = 7.5f;
+    int _powerupSpawnChance = 700;
+
+    int _selectedSetting = 0;
+    float _settingsHold = 0.0f;
 };
