@@ -42,7 +42,7 @@ private:
 
     sf::RenderWindow* _window;
     Paddle* _paddle;
-    Ball* _ball;
+	std::vector<Ball*> _balls;
     BrickManager* _brickManager;
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
@@ -52,8 +52,8 @@ private:
     sf::View _camera;
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
-    float _powerupFrequency = 7.5f;
-    int _powerupSpawnChance = 700;
+    float _powerupFrequency = .5f;
+    int _powerupSpawnChance = 70;
 
     int _selectedSetting = 0;
     float _settingsHold = 0.0f;

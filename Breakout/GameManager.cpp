@@ -4,7 +4,7 @@
 #include <iostream>
 
 GameManager::GameManager(sf::RenderWindow* window)
-    : _window(window), _paddle(nullptr), _ball(nullptr), _brickManager(nullptr), _powerupManager(nullptr),
+    : _window(window), _paddle(nullptr), _brickManager(nullptr), _powerupManager(nullptr),
     _messagingSystem(nullptr), _ui(nullptr), _vfx(nullptr), _pause(false), _time(0.f), _lives(3), _pauseHold(0.f), _levelComplete(false),
     _powerupInEffect({ none,0.f }), _timeLastPowerupSpawned(0.f)
 {
@@ -20,8 +20,9 @@ void GameManager::initialize()
     _paddle = new Paddle(_window);
     _brickManager = new BrickManager(_window, this);
     _messagingSystem = new MessagingSystem(_window);
-    _ball = new Ball(_window, 400.0f, this); 
-    _powerupManager = new PowerupManager(_window, _paddle, _ball);
+    Ball* ball = new Ball(_window, 400.0f, this);
+	_balls.push_back(ball);
+    _powerupManager = new PowerupManager(_window, _paddle, _balls);
     _ui = new UI(_window, _lives, this);
 
 
@@ -136,7 +137,7 @@ void GameManager::update(float dt)
     _time += dt;
 
 
-    if (_time > _timeLastPowerupSpawned + _powerupFrequency && rand() % _powerupSpawnChance == 0)      // TODO parameterise
+    if (_time > _timeLastPowerupSpawned + _powerupFrequency && rand() % _powerupSpawnChance == 0)
     {
         _powerupManager->spawnPowerup();
         _timeLastPowerupSpawned = _time;
@@ -153,7 +154,35 @@ void GameManager::update(float dt)
 
     // update everything 
     _paddle->update(dt);
-    _ball->update(dt);
+    for (Ball* _b : _balls)
+    {
+        _b->update(dt);
+    }
+    //_ball->update(dt);
+
+    //remove dead balls, respawn if none left
+    for (auto it = _balls.begin(); it != _balls.end(); )
+    {
+        if (!(*it)->isAlive())
+        {
+            delete *it;
+            it = _balls.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+    if (_balls.empty())
+    {
+        loseLife();
+        if (_lives > 0)
+        {
+            Ball* newBall = new Ball(_window, 400.0f, this);
+            _balls.push_back(newBall);
+        }
+    }
+
     _powerupManager->update(dt);
 }
 
@@ -162,7 +191,6 @@ void GameManager::loseLife()
     _lives--;
     _ui->lifeLost(_lives);
 
-    // TODO screen shake.
 	_vfx->Start(0.5f, 5.0f);
 }
 
@@ -171,7 +199,11 @@ void GameManager::render()
     _window->setView(_camera);
 
     _paddle->render();
-    _ball->render();
+    for (Ball* _b : _balls)
+    {
+        _b->render();
+    }
+    //_ball->render();
     _brickManager->render();
     _powerupManager->render();
     _window->draw(_masterText);

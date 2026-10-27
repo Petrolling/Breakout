@@ -154,6 +154,7 @@
     <ClCompile Include="PowerupManager.cpp" />
     <ClCompile Include="PowerupSlowBall.cpp" />
     <ClCompile Include="PowerupSmallPaddle.cpp" />
+    <ClCompile Include="PowerupSplitBall.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="VFX.cpp" />
   </ItemGroup>
@@ -172,6 +173,7 @@
     <ClInclude Include="PowerupManager.h" />
     <ClInclude Include="PowerupSlowBall.h" />
     <ClInclude Include="PowerupSmallPaddle.h" />
+    <ClInclude Include="PowerupSplitBall.h" />
     <ClInclude Include="VFX.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>

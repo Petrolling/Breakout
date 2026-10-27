@@ -59,12 +59,10 @@ void Ball::update(float dt)
         _direction.y *= -1;
     }
 
-    // lose life bounce
+    // ball dead GameManager will handle ti
     if (position.y > windowDimensions.y)
     {
-        _sprite.setPosition(0, 300);
-        _direction = { 1, 1 };
-        _gameManager->loseLife();
+        _isAlive = false;
     }
 
     // collision with paddle

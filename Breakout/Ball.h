@@ -13,8 +13,15 @@ public:
     void update(float dt);
     void render();
     void setVelocity(float coeff, float duration);
+    void setDirection(const sf::Vector2f& direction) { _direction = direction; }
     void setFireBall(float duration);
+	void setPosition(float x, float y) { _sprite.setPosition(x, y); }
 
+	sf::Vector2f getDirection() const { return _direction; }
+	float getVelocity() const { return _velocity; }
+    GameManager* getGameManager() const { return _gameManager; }
+	sf::Vector2f getPosition() const { return _sprite.getPosition(); }
+	bool isAlive() const { return _isAlive; }
 private:
     sf::CircleShape _sprite;
     sf::Vector2f _direction;
