@@ -15,7 +15,6 @@ PowerupSplitBall::~PowerupSplitBall()
 std::pair<POWERUPS, float> PowerupSplitBall::applyEffect()
 {
 
-    std::cout << "Balls before split: " << _balls.size() << std::endl;
     size_t ballCount = _balls.size();
 
     for (size_t i = 0; i < ballCount; ++i)
