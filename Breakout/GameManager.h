@@ -8,6 +8,7 @@
 #include "MessagingSystem.h"
 #include "UI.h"
 #include "VFX.h"
+#include "SoundManager.h"
 
 
 
@@ -23,6 +24,7 @@ public:
 
     Paddle* getPaddle() const;
     BrickManager* getBrickManager() const;
+	SoundManager* getSoundManager() const;
     PowerupManager* getPowerupManager() const;
     sf::RenderWindow* getWindow() const;
     UI* getUI() const;
@@ -46,6 +48,7 @@ private:
     BrickManager* _brickManager;
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
+    SoundManager* _soundManager;
     UI* _ui;
 	VFX* _vfx;
 
