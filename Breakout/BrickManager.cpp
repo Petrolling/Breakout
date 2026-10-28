@@ -48,6 +48,7 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
 
         // Mark the brick as destroyed (for simplicity, let's just remove it from rendering)
         // In a complete implementation, you would set an _isDestroyed flag or remove it from the vector
+        brick.setDestroyed(true);
 		_gameManager->getSoundManager()->playHit();
         brick = _bricks.back();
         _bricks.pop_back();

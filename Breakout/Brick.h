@@ -7,6 +7,8 @@ public:
     void render(sf::RenderWindow& window);
     sf::FloatRect getBounds() const;
 
+    void setDestroyed(bool _b) { _isDestroyed = _b; }
+    bool getDestroyed() { return _isDestroyed; }
 private:
     sf::RectangleShape _shape;
     bool _isDestroyed;
