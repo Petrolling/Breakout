@@ -34,7 +34,11 @@ You are to spend between three and eight hours improving this simple Breakout im
 _TO DO_
 
 <Add information to this section about the time you've taken for this task along with a professional changelist.>
-
+27/10/2026 - added screenshake on loss of life (30 mins)
+27/10/2026 - added mouse control to paddle (10 mins)
+27/10/2026 - added settings on pause for powerup modification (20 mins)
+27/10/2026 - BallSplitting powerup (2 hours)
+27/10/2026 - Play sound on block hit (20 mins)
 ---
 
 ### Change log
