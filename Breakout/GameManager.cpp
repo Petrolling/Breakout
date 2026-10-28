@@ -38,23 +38,57 @@ void GameManager::initialize()
 
 }
 
+void GameManager::reset()
+{
+    //clean up
+    for (Ball* ball : _balls) {
+        delete ball;
+    }
+    _balls.clear();
+
+    delete _paddle;
+    delete _brickManager;
+    delete _powerupManager;
+    delete _ui;
+
+    //reset vars
+    _lives = 3;
+    _time = 0.f;
+    _timeLastPowerupSpawned = 0.f;
+    _levelComplete = false;
+    _pause = false;
+    _masterText.setString("");
+    _masterText.setPosition(50, 400);
+
+    initialize();
+}
+
 void GameManager::update(float dt)
 {
     _powerupInEffect = _powerupManager->getPowerupInEffect();
     _ui->updatePowerupText(_powerupInEffect);
     _powerupInEffect.second -= dt;
     
-
     if (_lives <= 0)
     {
-        _masterText.setString("Game over.");
+        _masterText.setString("Game over. Press 'R' to restart.");
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+        {
+            reset();
+        }
         return;
     }
+
     if (_levelComplete)
     {
-        _masterText.setString("Level completed.");
+        _masterText.setString("Level completed. Press 'R' to restart.");
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+        {
+            reset();
+        }
         return;
     }
+
     // pause and pause handling
     if (_pauseHold > 0.f) _pauseHold -= dt;
     if (_settingsHold > 0.f) _settingsHold -= dt;

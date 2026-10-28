@@ -6,6 +6,7 @@ W Kavanagh & N Merchant. Summer 2024 (last maintained, Oct 26)
 
 Mouse to move the paddle right and left.
 P to pause.
+R to reset.
 
 ## Powerups
 
@@ -37,6 +38,8 @@ You are to spend between three and eight hours improving this simple Breakout im
 * 27/10/2026 - added settings on pause for powerup modification (20 mins)
 * 27/10/2026 - BallSplitting powerup (2 hours)
 * 27/10/2026 - Play sound on block hit (20 mins)
+* 28/10/2026 - Add trail on ball (50 mins)
+* 28/10/2026 - Reset game on r when death or win (10 mins)
 ---
 
 ### Change log

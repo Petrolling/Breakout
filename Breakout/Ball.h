@@ -1,6 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+struct TrailPoint {
+    sf::Vector2f position;
+    float lifetime;
+};
 
 class GameManager;  // forward declaration
 
@@ -33,6 +37,8 @@ private:
 
     GameManager* _gameManager;  // Reference to the GameManager
 
+    std::vector<TrailPoint> _trail;
+    const float _maxTrailLifetime = 0.3f;
 
     static constexpr float RADIUS = 10.0f;      
     static constexpr float VELOCITY = 350.0f;   // for reference.
