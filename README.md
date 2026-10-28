@@ -4,7 +4,7 @@ W Kavanagh & N Merchant. Summer 2024 (last maintained, Oct 26)
 
 ## Controls
 
-A/D to move the paddle right and left.
+Mouse to move the paddle right and left.
 P to pause.
 
 ## Powerups
